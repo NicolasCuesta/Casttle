@@ -1,0 +1,129 @@
+/* =========================================
+   VARIABLES DE COLOR (Mismas que en style.css)
+   ========================================= */
+:root {
+    --abyss-black: #090909;
+    --sapphire-blue: #0F1C3F;
+    --antique-silver: #C0C0C0;
+    --text-main: #e0e0e0;
+    --text-muted: #888888;
+    --border-color: #2a2a2a;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    background-color: var(--abyss-black);
+    color: var(--text-main);
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.6;
+}
+
+h1, h3 {
+    font-family: 'Cinzel', serif;
+    color: var(--antique-silver);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+a { color: var(--antique-silver); text-decoration: none; transition: 0.3s; }
+a:hover { color: #ffffff; }
+
+/* =========================================
+   NAVEGACIÓN (Copiada del index para mantener consistencia)
+   ========================================= */
+nav {
+    background: rgba(9, 9, 9, 0.95);
+    border-bottom: 1px solid var(--border-color);
+    padding: 1rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
+nav .logo a { font-family: 'Cinzel', serif; font-size: 1.5rem; font-weight: 900; letter-spacing: 4px; }
+nav .nav-links { list-style: none; display: flex; gap: 2rem; }
+nav .nav-links li a { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); }
+nav .nav-links li a:hover { color: var(--antique-silver); }
+nav .social-icons { display: flex; gap: 1rem; }
+nav .social-icons a { color: var(--text-muted); font-size: 1.1rem; }
+nav .social-icons a:hover { color: var(--antique-silver); }
+
+/* =========================================
+   CONTENEDOR "SOBRE MÍ"
+   ========================================= */
+.about-container {
+    padding: 10rem 5% 5rem 5%; /* Margen superior para que no tape el navbar */
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.about-text h1 {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid var(--antique-silver);
+    display: inline-block;
+    padding-bottom: 0.5rem;
+}
+
+.about-text h3 {
+    font-size: 1.2rem;
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+    color: var(--faded-silver);
+}
+
+.about-text p {
+    margin-bottom: 1rem;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    text-align: justify;
+}
+
+.about-image {
+    height: 600px;
+    background-color: var(--sapphire-blue);
+    border: 1px solid var(--border-color);
+    /* ⚠️ CAMBIA 'tu-foto.jpg' POR TU IMAGEN */
+    background-image: url('tu-foto.jpg');
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 0 30px rgba(15, 28, 63, 0.8);
+}
+
+/* Botón Industrial */
+.btn-industrial {
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 0.8rem 2rem;
+    border: 1px solid var(--antique-silver);
+    color: var(--antique-silver);
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    background: transparent;
+    transition: 0.3s;
+}
+.btn-industrial:hover {
+    background: var(--antique-silver);
+    color: var(--abyss-black);
+    box-shadow: 0 0 15px rgba(192, 192, 192, 0.4);
+}
+
+/* =========================================
+   RESPONSIVE (Móvil)
+   ========================================= */
+@media (max-width: 900px) {
+    .about-container { grid-template-columns: 1fr; padding-top: 8rem; }
+    .about-image { height: 400px; }
+    nav { flex-direction: column; gap: 1rem; padding: 1rem; }
+    nav .nav-links { display: none; }
+}

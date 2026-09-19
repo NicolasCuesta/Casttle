@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CASTTLE</title>
+    
+    <!-- Fuentes de Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- Nuestro estilo propio -->
+    <link rel="stylesheet" href="Style/Style.css">
+</head>
+<body>
+
+    <!-- =========================================
+         REPRODUCTOR DE SOUNDCLOUD OCULTO
+         ⚠️ REEMPLAZA EL 'src' CON EL ENLACE DE TU TRACK
+         ========================================= -->
+    <iframe id="sc-widget" 
+            width="100%" 
+            height="1" 
+            scrolling="no" 
+            frameborder="no" 
+            allow="autoplay"
+            style="position:fixed; top:-10px; left:-10px; opacity:0; pointer-events:none;"
+            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/TU_TRACK_ID&color=%23c0c0c0&auto_play=true&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=false">
+    </iframe>
+
+    <!-- BARRA DE NAVEGACIÓN -->
+    <nav>
+        <div class="logo">
+            <a href="index.html">
+                <img src="Style/CASTTLE_LETRA.png" alt="CASTTLE Logo" class="logo-img">
+            </a>
+        </div>
+        
+        <ul class="nav-links">
+            <li><a href="index.html" class="active">Inicio</a></li>
+            <li><a href="About.html">Sobre mí</a></li>
+            <li><a href="Ascension.html">Ascensión</a></li>
+            <li><a href="tracks.html">Tracks</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+
+        <!-- REDES SOCIALES (Sin Spotify) -->
+        <div class="social-icons">
+            <a href="https://soundcloud.com/casttlewhite?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing" target="_blank" title="SoundCloud">
+                <img src="Style/Sonundcloud.png" alt="SoundCloud" class="social-icon-img">
+            </a>
+            <a href="https://www.tiktok.com/@casttlewhite3?_r=1&_t=ZS-99qpWx24Fe8" target="_blank" title="TikTok">
+                <img src="Style/TikTok.png" alt="TikTok" class="social-icon-img">
+            </a>
+            <a href="https://www.instagram.com/casttle__live?stkn=MXFjZXphcXB3bXNvZg==" target="_blank" title="Instagram">
+                <img src="Style/Instagram.png" alt="Instagram" class="social-icon-img">
+            </a>
+        </div>
+    </nav>
+
+    <!-- BANNER PRINCIPAL (HERO) -->
+    <header class="hero">
+        <a href="Ascension.html" class="btn-industrial">Explorar Proyecto</a>
+    </header>
+
+    <!-- =========================================
+         SCRIPT DE SOUNDCLOUD
+         ========================================= -->
+    <script src="https://w.soundcloud.com/player/api.js"></script>
+    <script>
+        // Esperamos a que cargue el Widget API
+        window.addEventListener('load', function() {
+            var iframe = document.getElementById('sc-widget');
+            var widget = SC.Widget(iframe);
+            var isPlaying = false;
+
+            // Función para reproducir el audio
+            function playAudio() {
+                if (!isPlaying) {
+                    widget.setVolume(30); // Volumen al 30%
+                    widget.play();
+                    isPlaying = true;
+                }
+            }
+
+            // Intenta reproducir al cargar la página
+            widget.bind(SC.Widget.Events.READY, function() {
+                widget.setVolume(30);
+                widget.play();
+            });
+
+            // Fallback: si el navegador bloquea el autoplay, 
+            // se reproduce al primer clic del usuario en cualquier parte de la página
+            document.body.addEventListener('click', playAudio, { once: true });
+        });
+    </script>
+</body>
+</html>
