@@ -1,368 +1,729 @@
-/* =========================================
-   HERO DE ASCENSIÓN
-   ========================================= */
-.ascension-hero {
-    min-height: 80vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 12rem 5% 4rem 5%;
-    background: radial-gradient(circle at center, rgba(15, 28, 63, 0.3) 0%, var(--abyss-black) 70%);
+/* =========================================================
+   1. VARIABLES DE COLOR Y RESET GENERAL
+   ========================================================= */
+:root {
+    --bg-void: #020204;
+    --card-surface: rgba(8, 8, 12, 0.9);
+    --card-hover: rgba(14, 15, 22, 0.98);
+    
+    /* Luz Celestial & Resplandor Ritual */
+    --celestial-glow: rgba(220, 235, 255, 0.9);
+    --celestial-halo: rgba(160, 205, 255, 0.28);
+    --celestial-border: rgba(220, 235, 255, 0.6);
+    --crimson-ritual: rgba(255, 30, 45, 0.85);
+    --crimson-glow: rgba(255, 40, 55, 0.45);
 }
 
-.ascension-hero h1 {
-    font-size: 4rem;
-    font-weight: 900;
-    letter-spacing: 8px;
-    margin-bottom: 1rem;
-    text-shadow: 0 0 30px rgba(192, 192, 192, 0.4);
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-.ascension-subtitle {
-    font-family: 'Cinzel', serif;
-    font-size: 1.2rem;
-    letter-spacing: 5px;
-    text-transform: uppercase;
-    color: var(--aged-silver);
-    margin-bottom: 2rem;
-    opacity: 0.8;
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+    background-color: var(--bg-void);
 }
 
-.ascension-description {
-    max-width: 700px;
-    font-size: 1rem;
-    color: rgba(224, 224, 224, 0.7);
-    line-height: 1.8;
-}
-
-/* =========================================
-   GRID DE ACTOS
-   ========================================= */
-.acts-section {
-    padding: 4rem 5% 8rem 5%;
-}
-
-.acts-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1.5rem;
-    max-width: 1400px;
-    margin: 0 auto;
-}
-
-/* =========================================
-   TARJETA DE ACTO
-   ========================================= */
-.act-card {
-    position: relative;
-    background: linear-gradient(180deg, rgba(15, 28, 63, 0.5) 0%, rgba(9, 9, 9, 0.95) 100%);
-    border: 1px solid var(--border-color);
-    padding: 3rem 1.5rem 2rem 1.5rem;
-    cursor: pointer;
-    transition: all 0.5s ease;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    min-height: 380px;
-}
-
-/* Línea superior carmesí que aparece al hover */
-.act-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
+body {
     width: 100%;
-    height: 2px;
-    background: var(--subtle-crimson);
-    transform: scaleX(0);
-    transition: transform 0.5s ease;
+    min-height: 100vh;
+    overflow-x: hidden;
+    font-family: 'Cormorant Garamond', Georgia, serif; /* Fuente ritual para todo el texto corrido */
+    color: #dedee3;
+    background-color: var(--bg-void);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
 }
 
-.act-card:hover::before {
-    transform: scaleX(1);
+/* =========================================================
+   2. FONDO Y CAPA OSCURA
+   ========================================================= */
+.ascension-page {
+    position: relative;
+    background-image: url('Casttle-index.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    background-attachment: fixed;
+    min-height: 100vh;
 }
 
-.act-card:hover {
-    transform: translateY(-10px);
-    border-color: rgba(192, 192, 192, 0.6);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.9), 
-                0 0 30px rgba(192, 192, 192, 0.2),
-                inset 0 0 30px rgba(192, 192, 192, 0.05);
+.background-overlay {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(3, 3, 5, 0.45) 0%, rgba(2, 2, 4, 0.92) 100%);
+    z-index: 1;
+    pointer-events: none;
 }
 
-.act-card:hover .act-number {
-    color: var(--cold-silver);
-    text-shadow: 0 0 20px rgba(224, 224, 224, 0.9), 0 0 40px rgba(192, 192, 192, 0.5);
-    transform: scale(1.1);
-}
-
-.act-card:hover .act-button {
-    background: #ffffff;
-    color: var(--abyss-black);
-    border-color: #ffffff;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.7), 0 0 40px rgba(192, 192, 192, 0.4);
-}
-
-/* Número romano gigante */
-.act-number {
-    font-family: 'Cinzel', serif;
-    font-size: 3rem;
-    font-weight: 900;
-    color: var(--aged-silver);
-    opacity: 0.5;
-    margin-bottom: 1rem;
-    transition: all 0.5s ease;
-    line-height: 1;
-}
-
-.act-line {
-    width: 40px;
-    height: 1px;
-    background: var(--aged-silver);
-    margin-bottom: 1.5rem;
-    opacity: 0.5;
-}
-
-.act-title {
-    font-size: 1.3rem;
-    margin-bottom: 0.8rem;
-    letter-spacing: 2px;
-}
-
-.act-bpm {
-    font-size: 0.85rem;
-    color: var(--aged-silver);
-    letter-spacing: 2px;
-    margin-bottom: 1rem;
-    opacity: 0.7;
-}
-
-.act-short {
-    font-size: 0.85rem;
-    color: rgba(224, 224, 224, 0.6);
-    margin-bottom: 2rem;
-    flex-grow: 1;
-}
-
-.act-button {
-    display: inline-block;
-    padding: 0.6rem 1.2rem;
-    border: 1px solid var(--aged-silver);
-    color: var(--aged-silver);
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    transition: all 0.4s ease;
-    margin-top: auto;
-}
-
-/* Tarjeta Extended (más destacada) */
-.act-extended {
-    background: linear-gradient(180deg, rgba(74, 14, 14, 0.3) 0%, rgba(9, 9, 9, 0.95) 100%);
-    border-color: rgba(74, 14, 14, 0.6);
-}
-
-.act-extended::before {
-    background: var(--aged-silver);
-}
-
-.act-extended .act-number {
-    color: var(--subtle-crimson);
-    opacity: 0.9;
-    text-shadow: 0 0 15px rgba(74, 14, 14, 0.9);
-}
-
-/* =========================================
-   MODALES (VENTANAS EMERGENTES)
-   ========================================= */
-.modal-overlay {
+/* =========================================================
+   3. BARRA FANTASMA Y NAVEGACIÓN
+   ========================================================= */
+.nav-top-sensor {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.9);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    z-index: 9999;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 5% 5%;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.5s ease, visibility 0.5s ease;
+    height: 35px;
+    z-index: 180;
 }
 
-.modal-overlay.active {
-    opacity: 1;
-    visibility: visible;
-}
-
-.modal-box {
-    position: relative;
-    max-width: 800px;
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    max-height: 85vh;
-    overflow-y: auto;
-    background: linear-gradient(180deg, rgba(15, 28, 63, 0.6) 0%, rgba(9, 9, 9, 0.98) 100%);
-    border: 1px solid var(--aged-silver);
-    padding: 3.5rem 3rem;
-    /* Estilo no cuadrado: bordes asimétricos con esquinas ornamentadas */
-    clip-path: polygon(
-        0 20px, 20px 0, 
-        calc(100% - 20px) 0, 100% 20px, 
-        100% calc(100% - 20px), calc(100% - 20px) 100%, 
-        20px 100%, 0 calc(100% - 20px)
-    );
-    box-shadow: 0 0 60px rgba(192, 192, 192, 0.15), 
-                0 0 100px rgba(15, 28, 63, 0.4),
-                inset 0 0 80px rgba(0, 0, 0, 0.5);
-    transform: scale(0.85) translateY(30px);
-    opacity: 0;
-    transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+    z-index: 200;
+    background: linear-gradient(180deg, rgba(2, 2, 4, 0.85) 0%, rgba(2, 2, 4, 0) 100%);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border-bottom: none;
+    padding: 18px 45px;
+    transform: translateY(-105%);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.modal-overlay.active .modal-box {
-    transform: scale(1) translateY(0);
-    opacity: 1;
+.navbar.nav-active-view {
+    transform: translateY(0);
 }
 
-/* Scrollbar oscuro del modal */
-.modal-box::-webkit-scrollbar { width: 6px; }
-.modal-box::-webkit-scrollbar-track { background: rgba(9, 9, 9, 0.5); }
-.modal-box::-webkit-scrollbar-thumb { background: var(--aged-silver); border-radius: 3px; }
+.nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-/* Botón de cerrar */
-.modal-close {
-    position: absolute;
-    top: 1.5rem;
-    right: 1.5rem;
-    width: 36px;
-    height: 36px;
-    background: transparent;
-    border: 1px solid var(--aged-silver);
-    color: var(--aged-silver);
-    font-size: 1rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
+.nav-brand {
     display: flex;
     align-items: center;
-    justify-content: center;
-    z-index: 10;
+    text-decoration: none;
 }
 
-.modal-close:hover {
-    background: #ffffff;
-    color: var(--abyss-black);
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
-    transform: rotate(90deg);
+.nav-logo {
+    height: 72px;
+    width: auto;
+    max-width: 300px;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.9));
+    transition: transform 0.35s ease, filter 0.35s ease;
 }
 
-/* Ornamentos superiores e inferiores */
-.modal-ornament {
+.nav-brand:hover .nav-logo {
+    transform: scale(1.04);
+    filter: drop-shadow(0 0 16px var(--celestial-glow));
+}
+
+.nav-list {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    gap: 36px;
+}
+
+/* MENÚ CON TIPOGRAFÍA CINZEL DECORATIVE */
+.nav-link {
+    font-family: 'Cinzel Decorative', serif; /* Remates afilados */
+    font-size: 0.92rem;
+    font-weight: 700;
+    letter-spacing: 3.5px;
+    color: #cfd2dd;
+    text-decoration: none;
+    text-transform: uppercase;
+    position: relative;
+    padding: 6px 10px;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: #ffffff;
+    text-shadow: 0 0 16px var(--celestial-glow);
+}
+
+.nav-link::after {
+    content: '';
     position: absolute;
+    bottom: -2px;
     left: 50%;
     transform: translateX(-50%);
-    width: 60px;
+    width: 0;
     height: 2px;
-    background: var(--aged-silver);
+    background: #ffffff;
+    box-shadow: 0 0 10px var(--celestial-glow);
+    transition: width 0.35s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 80%;
+}
+
+.nav-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 32px;
+    height: 24px;
+    padding: 0;
+}
+
+.nav-toggle span {
+    width: 100%;
+    height: 2px;
+    background-color: #ffffff;
+    box-shadow: 0 0 8px var(--celestial-glow);
+    transition: all 0.3s ease;
+}
+
+/* =========================================================
+   4. SECCIÓN CATEDRAL
+   ========================================================= */
+.main-content {
+    position: relative;
+    z-index: 2;
+    padding: 60px 24px 80px 24px;
+    display: flex;
+    justify-content: center;
+}
+
+.ascension-wrapper {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    gap: 65px;
+}
+
+.cathedral-hero {
+    text-align: center;
+    max-width: 840px;
+    margin: 0 auto;
+}
+
+.ritual-symbol {
+    font-size: 2.6rem;
+    color: #e0e5f5;
+    display: inline-block;
+    margin-bottom: 0.4rem;
+    filter: drop-shadow(0 0 14px var(--celestial-glow));
+}
+
+/* Título Monumental con Pirata One */
+.cathedral-title {
+    font-family: 'Pirata One', cursive, serif;
+    font-size: 5rem;
+    font-weight: 400;
+    letter-spacing: 6px;
+    color: #ffffff;
+    text-transform: uppercase;
+    margin-bottom: 0.2rem;
+    text-shadow: 
+        0 0 35px rgba(180, 220, 255, 0.45),
+        0 4px 15px rgba(0, 0, 0, 0.95);
+}
+
+.cathedral-tagline {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 0.85rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #9ea4b5;
+    font-weight: 700;
+    margin-bottom: 1.6rem;
+}
+
+.gothic-divider {
+    width: 120px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #ffffff, transparent);
+    box-shadow: 0 0 10px var(--celestial-glow);
+    margin: 0 auto 1.8rem auto;
+}
+
+.gothic-divider.small {
+    width: 70px;
+    margin-bottom: 1.4rem;
+}
+
+/* Manifiesto y textos largos con Cormorant Garamond */
+.cathedral-manifesto {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.25rem;
+    line-height: 1.8;
+    color: #d1d1d8;
+    font-weight: 400;
+}
+
+/* =========================================================
+   5. CARTAS RITUALES (ESTRUCTURA DE TAROT)
+   ========================================================= */
+.acts-altar {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    align-items: start;
+}
+
+.altar-card {
+    position: relative;
+    background: var(--card-surface);
+    border-radius: 4px;
+    cursor: pointer;
+    overflow: hidden;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.95);
+    transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+    text-align: center;
+}
+
+.card-border-frame {
+    padding: 38px 24px 28px 24px;
+    border: 2px solid rgba(255, 255, 255, 0.18);
+    position: relative;
+    border-radius: 4px;
+    transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.sigil-container {
+    width: 100%;
+    height: 140px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.ritual-sigil {
+    position: relative;
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 5rem;
+    color: #e5eaf5;
+    line-height: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+.sigil-trident {
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.25));
+}
+
+.sigil-snake {
+    position: absolute;
+    width: 60px;
+    height: 75px;
+    border: 2px solid rgba(220, 235, 255, 0.5);
+    border-radius: 50% 50% 45% 45%;
+    border-top: none;
+    transform: rotate(45deg);
+    pointer-events: none;
     opacity: 0.6;
 }
 
-.modal-ornament.top { top: 1.5rem; }
-.modal-ornament.bottom { bottom: 1.5rem; }
-
-/* Títulos del modal */
-.modal-title {
-    font-size: 2rem;
-    text-align: center;
-    margin-bottom: 0.8rem;
-    letter-spacing: 3px;
-    text-shadow: 0 0 20px rgba(192, 192, 192, 0.3);
+.card-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.modal-bpm {
-    text-align: center;
-    font-size: 1rem;
-    color: var(--aged-silver);
-    letter-spacing: 4px;
-    margin-bottom: 1.5rem;
-    opacity: 0.8;
+.act-numeral {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: #ffffff;
+    margin-bottom: 4px;
 }
 
-.modal-divider {
-    width: 80px;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--aged-silver), transparent);
-    margin: 0 auto 2.5rem auto;
-    box-shadow: 0 0 10px rgba(192, 192, 192, 0.5);
-}
-
-.modal-concept {
-    color: rgba(224, 224, 224, 0.85);
-    font-size: 0.95rem;
-    line-height: 1.8;
-    margin-bottom: 1.2rem;
-    text-align: justify;
-}
-
-.modal-subtitle {
-    font-family: 'Cinzel', serif;
-    font-size: 1rem;
-    color: var(--aged-silver);
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid rgba(192, 192, 192, 0.3);
-}
-
-.modal-list {
-    list-style: none;
-    padding-left: 0;
-    margin-bottom: 1rem;
-}
-
-.modal-list li {
-    position: relative;
-    padding-left: 1.5rem;
-    color: rgba(224, 224, 224, 0.75);
-    font-size: 0.9rem;
+.act-tempo {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    color: #9cb2cc;
+    font-weight: 700;
     margin-bottom: 0.6rem;
-    line-height: 1.6;
 }
 
-.modal-list li::before {
-    content: '◈';
+.act-name {
+    font-family: 'Pirata One', cursive, serif;
+    font-size: 2.3rem;
+    font-weight: 400;
+    letter-spacing: 3px;
+    color: #ffffff;
+    margin-bottom: 0.3rem;
+    text-transform: uppercase;
+    transition: text-shadow 0.35s ease;
+}
+
+.act-stage {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 0.74rem;
+    letter-spacing: 2px;
+    color: #838d9f;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.pedestal-glow {
     position: absolute;
-    left: 0;
-    color: var(--aged-silver);
-    font-size: 0.7rem;
-    top: 0.2rem;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 30px;
+    background: radial-gradient(circle, var(--crimson-glow) 0%, transparent 70%);
+    filter: blur(10px);
+    opacity: 0.4;
+    transition: opacity 0.4s ease, width 0.4s ease;
 }
 
-.modal-list li strong {
-    color: var(--cold-silver);
+.altar-card:hover,
+.altar-card.expanded,
+.altar-card:focus-visible {
+    transform: translateY(-8px);
+    background: var(--card-hover);
+    box-shadow: 
+        0 25px 60px rgba(0, 0, 0, 0.98),
+        0 0 35px var(--celestial-halo);
 }
 
-/* =========================================
-   RESPONSIVE
-   ========================================= */
-@media (max-width: 1200px) {
-    .acts-grid { grid-template-columns: repeat(2, 1fr); }
+.altar-card:hover .card-border-frame,
+.altar-card.expanded .card-border-frame {
+    border-color: var(--celestial-border);
+    box-shadow: inset 0 0 20px rgba(220, 235, 255, 0.1);
 }
 
-@media (max-width: 700px) {
-    .acts-grid { grid-template-columns: 1fr; }
-    .ascension-hero h1 { font-size: 2.5rem; letter-spacing: 5px; }
-    .modal-box { padding: 3rem 1.8rem; }
-    .modal-title { font-size: 1.5rem; }
-    .modal-close { top: 1rem; right: 1rem; }
+.altar-card:hover .act-name,
+.altar-card.expanded .act-name {
+    text-shadow: 0 0 16px var(--celestial-glow);
+}
+
+.altar-card:hover .ritual-sigil,
+.altar-card.expanded .ritual-sigil {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 20px var(--celestial-glow)) drop-shadow(0 0 8px var(--crimson-ritual));
+}
+
+.altar-card:hover .pedestal-glow,
+.altar-card.expanded .pedestal-glow {
+    opacity: 1;
+    width: 180px;
+}
+
+.card-expansion {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.expansion-inner {
+    overflow: hidden;
+    padding: 0 20px;
+}
+
+.altar-card:hover .card-expansion,
+.altar-card.expanded .card-expansion {
+    grid-template-rows: 1fr;
+}
+
+/* Descripción interna de las cartas */
+.act-description {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: #c4c4cc;
+    padding-top: 15px;
+    margin-bottom: 1rem;
+    border-top: 1px dashed rgba(255, 255, 255, 0.15);
+}
+
+.act-genres {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 25px;
+}
+
+.act-genres li {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 0.68rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #e5eaf5;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    padding: 5px 12px;
+    border-radius: 2px;
+}
+
+/* =========================================================
+   6. EXTENDED BANNER Y BOOKING
+   ========================================================= */
+.extended-card {
+    position: relative;
+    background: linear-gradient(180deg, rgba(16, 18, 26, 0.85) 0%, rgba(8, 9, 14, 0.95) 100%);
+    border: 1px solid rgba(215, 235, 255, 0.22);
+    border-radius: 3px;
+    padding: 45px 35px;
+    text-align: center;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.9);
+    overflow: hidden;
+}
+
+.extended-glow {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 50%, rgba(140, 190, 255, 0.1) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.celestial-badge {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 0.8rem;
+    letter-spacing: 4px;
+    color: #b0c6e2;
+    text-transform: uppercase;
+    display: inline-block;
+    margin-bottom: 0.8rem;
+    text-shadow: 0 0 10px rgba(180, 220, 255, 0.4);
+}
+
+.extended-title {
+    font-family: 'Pirata One', cursive, serif;
+    font-size: 2.8rem;
+    font-weight: 400;
+    letter-spacing: 3px;
+    color: #ffffff;
+    margin-bottom: 0.6rem;
+    text-transform: uppercase;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+.extended-desc {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: #c4c4cc;
+    max-width: 820px;
+    margin: 0 auto;
+}
+
+.booking-portal {
+    text-align: center;
+    padding: 30px 20px;
+}
+
+.portal-heading {
+    font-family: 'Pirata One', cursive, serif;
+    font-size: 3rem;
+    font-weight: 400;
+    letter-spacing: 4px;
+    color: #ffffff;
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+    text-shadow: 0 0 15px rgba(200, 225, 255, 0.4);
+}
+
+.portal-text {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 1.25rem;
+    color: #b5b5bc;
+    max-width: 680px;
+    margin: 0 auto 2.2rem auto;
+    line-height: 1.8;
+}
+
+.btn-celestial-action {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 18px 46px;
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 0.95rem;
+    font-weight: 900;
+    letter-spacing: 4px;
+    color: #ffffff;
+    text-decoration: none;
+    text-transform: uppercase;
+    background: rgba(18, 22, 32, 0.85);
+    border: 1px solid rgba(220, 235, 255, 0.35);
+    border-radius: 2px;
+    box-shadow: 0 0 20px rgba(160, 205, 255, 0.2);
+    transition: all 0.35s ease;
+}
+
+.btn-celestial-action:hover {
+    background: rgba(35, 44, 65, 0.95);
+    border-color: #ffffff;
+    box-shadow: 0 0 30px var(--celestial-glow);
+    transform: translateY(-3px);
+}
+
+/* =========================================================
+   7. REDES SOCIALES ILUMINADAS
+   ========================================================= */
+.social-altar {
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+}
+
+.social-portal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.portal-btn {
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    background: rgba(12, 14, 20, 0.85);
+    border: 1.5px solid rgba(200, 225, 255, 0.35);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.9), 0 0 15px rgba(160, 205, 255, 0.2);
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.portal-btn img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.9));
+    transition: transform 0.3s ease;
+}
+
+.portal-btn:hover {
+    background: rgba(30, 38, 55, 0.9);
+    border-color: #ffffff;
+    box-shadow: 0 0 25px var(--celestial-glow);
+    transform: translateY(-4px) scale(1.08);
+}
+
+.portal-btn:hover img {
+    transform: scale(1.15);
+}
+
+.altar-copy {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 0.72rem;
+    letter-spacing: 3px;
+    color: #6a6a72;
+    text-transform: uppercase;
+}
+
+/* =========================================================
+   8. ADAPTACIÓN A CELULAR (<= 860px)
+   ========================================================= */
+@media screen and (max-width: 860px) {
+    .navbar {
+        padding: 12px 20px;
+        transform: translateY(0);
+        background: rgba(2, 2, 4, 0.96);
+    }
+
+    .nav-logo {
+        height: 48px;
+        max-width: 200px;
+    }
+
+    .nav-toggle {
+        display: flex;
+    }
+
+    .nav-menu {
+        position: fixed;
+        top: 72px;
+        left: 0;
+        width: 100%;
+        background: rgba(3, 3, 5, 0.98);
+        border-bottom: 1px solid rgba(200, 225, 255, 0.25);
+        backdrop-filter: blur(25px);
+        -webkit-backdrop-filter: blur(25px);
+        transform: translateY(-160%);
+        transition: transform 0.4s ease;
+        padding: 30px 0;
+    }
+
+    .nav-menu.nav-active {
+        transform: translateY(0);
+    }
+
+    .nav-list {
+        flex-direction: column;
+        gap: 22px;
+    }
+
+    .nav-link {
+        font-size: 1.05rem;
+        letter-spacing: 4px;
+    }
+
+    .acts-altar {
+        grid-template-columns: 1fr;
+        gap: 26px;
+    }
+
+    .altar-card {
+        max-width: 440px;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    .cathedral-title {
+        font-size: 3.5rem;
+        letter-spacing: 3px;
+    }
+
+    .act-name {
+        font-size: 2rem;
+    }
+
+    .extended-title {
+        font-size: 2rem;
+    }
+
+    .portal-heading {
+        font-size: 2.2rem;
+    }
+
+    .cathedral-manifesto {
+        font-size: 1.15rem;
+    }
+
+    .act-description {
+        font-size: 1.05rem;
+    }
+
+    .social-portal {
+        gap: 20px;
+    }
+
+    .portal-btn {
+        width: 52px;
+        height: 52px;
+    }
+
+    .portal-btn img {
+        width: 25px;
+        height: 25px;
+    }
 }

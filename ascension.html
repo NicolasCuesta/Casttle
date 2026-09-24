@@ -2,300 +2,259 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ascensión</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>CASTTLE | Ascensión</title>
     
-    <!-- Fuentes -->
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Tipografías: 
+         - Pirata One (Títulos Góticos)
+         - Cinzel Decorative (Menús y Subtítulos afilados)
+         - Cormorant Garamond (Descripciones / Textos antiguos rituales)
+    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Pirata+One&display=swap" rel="stylesheet">
     
-    <!-- CSS Principal -->
-    <link rel="stylesheet" href="Style/Style.css">
-    <!-- CSS exclusivo de Ascensión -->
     <link rel="stylesheet" href="Style/Ascension.css">
 </head>
-<body>
+<body class="ascension-page">
 
-    <!-- =========================================
-         REPRODUCTOR DE SOUNDCLOUD OCULTO
-         ⚠️ REEMPLAZA 'TU_TRACK_ID' CON TU ID REAL
-         ========================================= -->
-    <iframe id="sc-widget" 
-            width="100%" 
-            height="1" 
-            scrolling="no" 
-            frameborder="no" 
-            allow="autoplay"
-            style="position:fixed; top:-10px; left:-10px; opacity:0; pointer-events:none;"
-            src="https://soundcloud.com/casttlewhite/boicot-1?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing">
-    </iframe>
+    <div class="background-overlay"></div>
 
-    <!-- BARRA DE NAVEGACIÓN -->
-    <nav>
-        <div class="logo">
-            <a href="index.html"><img src="Style/CASTTLE_LETRA.png" alt="CASTTLE Logo" class="logo-img"></a>
+    <!-- SENSOR PARA DETECTAR CURSOR EN EL TOPE -->
+    <div class="nav-top-sensor" id="navSensor"></div>
+
+    <!-- BARRA FANTASMA FLOTANTE -->
+    <header class="navbar" id="mainNavbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand" title="CASTTLE">
+                <img src="Style/CASTTLE_LETRA.png" alt="CASTTLE" class="nav-logo">
+            </a>
+
+            <!-- Botón menú móvil -->
+            <button class="nav-toggle" id="navToggle" aria-label="Abrir menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <!-- Menú con enlaces Cinzel Decorative -->
+            <nav class="nav-menu" id="navMenu">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Inicio</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="ascension.html" class="nav-link active">Ascensión</a></li>
+                    <li><a href="tracks.html" class="nav-link">Tracks</a></li>
+                    <li><a href="#contacto" class="nav-link">Contacto</a></li>
+                </ul>
+            </nav>
         </div>
-        <ul class="nav-links">
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="about.html">Sobre mí</a></li>
-            <li><a href="ascension.html" class="active">Ascensión</a></li>
-            <li><a href="tracks.html">Tracks</a></li>
-            <li><a href="contacto.html">Contacto</a></li>
-        </ul>
-        <div class="social-icons">
-            <a href="https://soundcloud.com/casttlewhite" target="_blank" title="SoundCloud"><img src="Style/Sonundcloud.png" alt="SoundCloud" class="social-icon-img"></a>
-            <a href="https://www.tiktok.com/@casttlewhite3" target="_blank" title="TikTok"><img src="Style/TikTok.png" alt="TikTok" class="social-icon-img"></a>
-            <a href="https://www.instagram.com/casttle__live" target="_blank" title="Instagram"><img src="Style/Instagram.png" alt="Instagram" class="social-icon-img"></a>
-        </div>
-    </nav>
-
-    <!-- =========================================
-         HERO ASCENSIÓN
-         ========================================= -->
-    <header class="ascension-hero">
-        <h1>Ascensión</h1>
-        <p class="ascension-subtitle">El viaje sonoro en tres actos</p>
-        <p class="ascension-description">
-            Ascensión es el concepto central de CASTTLE. Una experiencia musical estructurada como un proceso de transformación dividido en tres etapas. 
-            Los tres actos representan diferentes estados dentro de un mismo viaje sonoro.
-        </p>
     </header>
 
-    <!-- =========================================
-         GRID DE ACTOS
-         ========================================= -->
-    <section class="acts-section">
-        <div class="acts-grid">
+    <!-- CONTENIDO MONUMENTAL -->
+    <main class="main-content">
+        <div class="ascension-wrapper">
             
-            <!-- ACTO I -->
-            <div class="act-card" onclick="openModal('modal-1')">
-                <div class="act-number">I</div>
-                <div class="act-line"></div>
-                <h3 class="act-title">El Llamado</h3>
-                <div class="act-bpm">145 – 155 BPM</div>
-                <p class="act-short">El despertar de la energía.</p>
-                <span class="act-button">Ver Información</span>
-            </div>
+            <!-- ENCABEZADO CATEDRAL -->
+            <header class="cathedral-hero">
+                <span class="ritual-symbol">🜏</span>
+                <h1 class="cathedral-title">ASCENSIÓN</h1>
+                <p class="cathedral-tagline">HYBRID LIVE / HARD TECHNO / INDUSTRIAL / REVERSE BASS</p>
+                <div class="gothic-divider"></div>
+                <p class="cathedral-manifesto">
+                    Una experiencia musical estructurada como un proceso de transformación ritual dividido en tres etapas. Un viaje sonoro concebido como vehículo para despertar, confrontar el caos y trascenderlo en la pista de baile.
+                </p>
+            </header>
 
-            <!-- ACTO II -->
-            <div class="act-card" onclick="openModal('modal-2')">
-                <div class="act-number">II</div>
-                <div class="act-line"></div>
-                <h3 class="act-title">La Confrontación</h3>
-                <div class="act-bpm">155 – 160 BPM</div>
-                <p class="act-short">El punto de mayor tensión.</p>
-                <span class="act-button">Ver Información</span>
-            </div>
+            <!-- LOS TRES ACTOS (Centrados, simétricos e interactivos) -->
+            <section class="acts-altar" aria-label="Actos de Ascensión">
+                
+                <!-- ACTO I: EL LLAMADO -->
+                <article class="altar-card" tabindex="0">
+                    <div class="card-border-frame">
+                        <div class="sigil-container">
+                            <div class="ritual-sigil">
+                                <span class="sigil-trident">Ψ</span>
+                                <div class="sigil-snake"></div>
+                            </div>
+                        </div>
+                        <div class="card-info">
+                            <span class="act-numeral">I</span>
+                            <span class="act-tempo">145 — 155 BPM</span>
+                            <h2 class="act-name">EL LLAMADO</h2>
+                            <h3 class="act-stage">EL DESPERTAR DE LA ENERGÍA</h3>
+                        </div>
+                    </div>
 
-            <!-- ACTO III -->
-            <div class="act-card" onclick="openModal('modal-3')">
-                <div class="act-number">III</div>
-                <div class="act-line"></div>
-                <h3 class="act-title">La Liberación</h3>
-                <div class="act-bpm">160 – 170 BPM</div>
-                <p class="act-short">La culminación del viaje.</p>
-                <span class="act-button">Ver Información</span>
-            </div>
+                    <!-- Despliegue interactivo -->
+                    <div class="card-expansion">
+                        <div class="expansion-inner">
+                            <p class="act-description">
+                                Construcción hipnótica y progresiva. Grooves densos y atmósferas oscuras que preparan el cuerpo y la mente para elevar la tensión sin precipitar la agresividad máxima.
+                            </p>
+                            <ul class="act-genres">
+                                <li>Hard Techno</li>
+                                <li>Hard Groove</li>
+                                <li>Industrial</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="pedestal-glow"></div>
+                </article>
 
-            <!-- EXTENDED -->
-            <div class="act-card act-extended" onclick="openModal('modal-4')">
-                <div class="act-number">✦</div>
-                <div class="act-line"></div>
-                <h3 class="act-title">Ascensión Extended</h3>
-                <div class="act-bpm">Hasta 3 Horas</div>
-                <p class="act-short">La experiencia completa.</p>
-                <span class="act-button">Ver Información</span>
-            </div>
+                <!-- ACTO II: LA CONFRONTACIÓN -->
+                <article class="altar-card featured" tabindex="0">
+                    <div class="card-border-frame">
+                        <div class="sigil-container">
+                            <div class="ritual-sigil">
+                                <span class="sigil-trident">Ψ</span>
+                                <div class="sigil-snake"></div>
+                            </div>
+                        </div>
+                        <div class="card-info">
+                            <span class="act-numeral">II</span>
+                            <span class="act-tempo">155 — 160 BPM</span>
+                            <h2 class="act-name">LA CONFRONTACIÓN</h2>
+                            <h3 class="act-stage">MÁXIMA TENSIÓN</h3>
+                        </div>
+                    </div>
+
+                    <div class="card-expansion">
+                        <div class="expansion-inner">
+                            <p class="act-description">
+                                El punto neurálgico del viaje. El sonido se vuelve físico, mecánico y directo. Percusiones industriales y guitarras en vivo para la respuesta inmediata del horario estelar.
+                            </p>
+                            <ul class="act-genres">
+                                <li>Hard Industrial</li>
+                                <li>Schranz</li>
+                                <li>Live Climax</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="pedestal-glow"></div>
+                </article>
+
+                <!-- ACTO III: LA LIBERACIÓN -->
+                <article class="altar-card" tabindex="0">
+                    <div class="card-border-frame">
+                        <div class="sigil-container">
+                            <div class="ritual-sigil">
+                                <span class="sigil-trident">Ψ</span>
+                                <div class="sigil-snake"></div>
+                            </div>
+                        </div>
+                        <div class="card-info">
+                            <span class="act-numeral">III</span>
+                            <span class="act-tempo">160 — 170 BPM</span>
+                            <h2 class="act-name">LA LIBERACIÓN</h2>
+                            <h3 class="act-stage">CATARSIS COLECTIVA</h3>
+                        </div>
+                    </div>
+
+                    <div class="card-expansion">
+                        <div class="expansion-inner">
+                            <p class="act-description">
+                                La culminación del ritual. La energía acumulada se transforma en una explosión de velocidad implacable, bajos invertidos y catarsis absoluta para el cierre.
+                            </p>
+                            <ul class="act-genres">
+                                <li>Hardcore</li>
+                                <li>Reverse Bass</li>
+                                <li>Hard Dance</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="pedestal-glow"></div>
+                </article>
+
+            </section>
+
+            <!-- EXTENDED LIVE EXPERIENCE -->
+            <section class="extended-card">
+                <div class="extended-glow"></div>
+                <span class="celestial-badge">EXPERIENCIA COMPLETA</span>
+                <h3 class="extended-title">ASCENSIÓN EXTENDED — HASTA 3 HORAS</h3>
+                <div class="gothic-divider small"></div>
+                <p class="extended-desc">
+                    Los tres actos unificados en un ritual continuo sin pausas. Transición progresiva desde el trance hipnótico inicial hasta la catarsis de 170 BPM con procesamiento en tiempo real mediante Ableton Live y guitarra eléctrica.
+                </p>
+            </section>
+
+            <!-- SECCIÓN CONTACTO / BOOKING -->
+            <section class="booking-portal" id="contacto">
+                <h3 class="portal-heading">BOOKING & CONTACTO</h3>
+                <div class="gothic-divider small"></div>
+                <p class="portal-text">
+                    Formatos disponibles para clubes, festivales y eventos underground: <strong>Hybrid Live</strong> (Acto individual o Extended) y <strong>DJ Set</strong>.
+                </p>
+                <div class="portal-cta">
+                    <a href="mailto:booking@casttle.com" class="btn-celestial-action">
+                        <span>CONTACTAR BOOKING</span>
+                    </a>
+                </div>
+            </section>
+
+            <!-- FOOTER CON REDES SOCIALES ILUMINADAS -->
+            <footer class="social-altar">
+                <div class="social-portal">
+                    <a href="https://on.soundcloud.com/u6CzOFonzNvWdFdaib" target="_blank" rel="noopener noreferrer" class="portal-btn" title="SoundCloud">
+                        <img src="Style/Sonundcloud.png" alt="SoundCloud">
+                    </a>
+                    <a href="https://www.instagram.com/casttle__live?stkn=MXFjZXphcXB3bXNvZg==" target="_blank" rel="noopener noreferrer" class="portal-btn" title="Instagram">
+                        <img src="Style/Instagram.png" alt="Instagram">
+                    </a>
+                    <a href="https://www.tiktok.com/@casttlewhite3?_r=1&_t=ZS-99qpWx24Fe8" target="_blank" rel="noopener noreferrer" class="portal-btn" title="TikTok">
+                        <img src="Style/TikTok.png" alt="TikTok">
+                    </a>
+                    <a href="https://open.spotify.com" target="_blank" rel="noopener noreferrer" class="portal-btn" title="Spotify">
+                        <img src="Style/Spotify.png" alt="Spotify">
+                    </a>
+                </div>
+                <p class="altar-copy">© CASTTLE — HYBRID LIVE</p>
+            </footer>
 
         </div>
-    </section>
+    </main>
 
-    <!-- =========================================
-         MODALES
-         ========================================= -->
-
-    <!-- MODAL ACTO I -->
-    <div class="modal-overlay" id="modal-1" onclick="closeModal(event, 'modal-1')">
-        <div class="modal-box">
-            <button class="modal-close" onclick="closeModal(event, 'modal-1')">✕</button>
-            <div class="modal-ornament top"></div>
-            <h2 class="modal-title">Acto I — El Llamado</h2>
-            <div class="modal-bpm">145 – 155 BPM</div>
-            <div class="modal-divider"></div>
-            <p class="modal-concept">
-                <strong>El Llamado</strong> representa el despertar de la energía. Es un formato diseñado para comenzar a elevar progresivamente la intensidad de la pista sin llegar todavía al punto máximo de agresividad.
-            </p>
-            <p class="modal-concept">
-                La propuesta trabaja con grooves, tensión, atmósferas oscuras y una construcción progresiva que prepara al público para los siguientes niveles de Ascensión.
-            </p>
-            
-            <h4 class="modal-subtitle">Sonido</h4>
-            <ul class="modal-list">
-                <li>Hard Techno</li>
-                <li>Hard Groove oscuro</li>
-                <li>Techno Industrial</li>
-                <li>Elementos hipnóticos</li>
-                <li>Percusión contundente</li>
-            </ul>
-
-            <h4 class="modal-subtitle">Ideal para</h4>
-            <ul class="modal-list">
-                <li>Segundo bloque de una fiesta</li>
-                <li>Warm Up avanzado</li>
-                <li>Transición hacia Peak Time</li>
-            </ul>
-            <div class="modal-ornament bottom"></div>
-        </div>
-    </div>
-
-    <!-- MODAL ACTO II -->
-    <div class="modal-overlay" id="modal-2" onclick="closeModal(event, 'modal-2')">
-        <div class="modal-box">
-            <button class="modal-close" onclick="closeModal(event, 'modal-2')">✕</button>
-            <div class="modal-ornament top"></div>
-            <h2 class="modal-title">Acto II — La Confrontación</h2>
-            <div class="modal-bpm">155 – 160 BPM</div>
-            <div class="modal-divider"></div>
-            <p class="modal-concept">
-                <strong>La Confrontación</strong> representa el punto de mayor tensión del viaje. El sonido se vuelve más agresivo, físico y directo, utilizando percusiones industriales, bajos contundentes y estructuras diseñadas para generar una respuesta inmediata en la pista.
-            </p>
-            <p class="modal-concept">
-                Es el formato principal para momentos de alta intensidad y horario estelar.
-            </p>
-            
-            <h4 class="modal-subtitle">Sonido</h4>
-            <ul class="modal-list">
-                <li>Hard Industrial</li>
-                <li>Schranz</li>
-                <li>Industrial Techno</li>
-                <li>Hard Techno agresivo</li>
-            </ul>
-
-            <h4 class="modal-subtitle">Ideal para</h4>
-            <ul class="modal-list">
-                <li>Peak Time</li>
-                <li>Main Room</li>
-                <li>Festivales</li>
-                <li>Eventos enfocados en Hard Techno / Industrial</li>
-            </ul>
-            <div class="modal-ornament bottom"></div>
-        </div>
-    </div>
-
-    <!-- MODAL ACTO III -->
-    <div class="modal-overlay" id="modal-3" onclick="closeModal(event, 'modal-3')">
-        <div class="modal-box">
-            <button class="modal-close" onclick="closeModal(event, 'modal-3')">✕</button>
-            <div class="modal-ornament top"></div>
-            <h2 class="modal-title">Acto III — La Liberación</h2>
-            <div class="modal-bpm">160 – 170 BPM</div>
-            <div class="modal-divider"></div>
-            <p class="modal-concept">
-                <strong>La Liberación</strong> representa la culminación de Ascensión. Después de la tensión acumulada durante los actos anteriores, el sonido aumenta nuevamente su velocidad y contundencia para llevar la experiencia hacia una sensación de catarsis colectiva.
-            </p>
-            <p class="modal-concept">
-                Es el formato pensado para cerrar una noche con máxima energía.
-            </p>
-            
-            <h4 class="modal-subtitle">Sonido</h4>
-            <ul class="modal-list">
-                <li>Hardcore</li>
-                <li>Reverse Bass</li>
-                <li>Hardstyle Underground</li>
-                <li>Hard Dance</li>
-            </ul>
-
-            <h4 class="modal-subtitle">Ideal para</h4>
-            <ul class="modal-list">
-                <li>Closing Sets</li>
-                <li>Último artista de la noche</li>
-                <li>Cierres de festival</li>
-                <li>Escenarios de Hardcore / Hard Dance</li>
-            </ul>
-            <div class="modal-ornament bottom"></div>
-        </div>
-    </div>
-
-    <!-- MODAL EXTENDED -->
-    <div class="modal-overlay" id="modal-4" onclick="closeModal(event, 'modal-4')">
-        <div class="modal-box">
-            <button class="modal-close" onclick="closeModal(event, 'modal-4')">✕</button>
-            <div class="modal-ornament top"></div>
-            <h2 class="modal-title">Ascensión Extended</h2>
-            <div class="modal-bpm">Hasta 3 Horas</div>
-            <div class="modal-divider"></div>
-            <p class="modal-concept">
-                <strong>Ascensión Extended</strong> es la presentación completa del concepto CASTTLE. En este formato los tres actos se desarrollan dentro de una misma presentación:
-            </p>
-            <p class="modal-concept" style="text-align:center; letter-spacing:2px; color: var(--aged-silver);">
-                El Llamado → La Confrontación → La Liberación
-            </p>
-            <p class="modal-concept">
-                A diferencia de contratar un acto individual, este formato permite desarrollar toda la narrativa sonora y llevar al público desde los primeros niveles de energía hasta el cierre.
-            </p>
-            
-            <h4 class="modal-subtitle">Estructura</h4>
-            <ul class="modal-list">
-                <li><strong>Acto I:</strong> 145–155 BPM — Construcción y preparación</li>
-                <li><strong>Acto II:</strong> 155–160 BPM — Tensión e intensidad</li>
-                <li><strong>Acto III:</strong> 160–170 BPM — Catarsis y cierre</li>
-            </ul>
-
-            <p class="modal-concept" style="font-style: italic; opacity: 0.7;">
-                Importante: Los tres actos no tienen que presentarse obligatoriamente juntos. El Extended Set es una modalidad especial para eventos que quieran presentar el concepto completo.
-            </p>
-            <div class="modal-ornament bottom"></div>
-        </div>
-    </div>
-
-    <!-- SCRIPT DE SOUNDCLOUD + MODALES -->
-    <script src="https://w.soundcloud.com/player/api.js"></script>
+    <!-- SCRIPT DE VISIBILIDAD DE NAVBAR E INTERACCIÓN -->
     <script>
-        // ============ SOUNDCLOUD ============
-        window.addEventListener('load', function() {
-            var iframe = document.getElementById('sc-widget');
-            var widget = SC.Widget(iframe);
-            var isPlaying = false;
-            function playAudio() {
-                if (!isPlaying) {
-                    widget.setVolume(30);
-                    widget.play();
-                    isPlaying = true;
-                }
+        const navbar = document.getElementById('mainNavbar');
+        const navSensor = document.getElementById('navSensor');
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        function showNav() { navbar.classList.add('nav-active-view'); }
+        function hideNav() { 
+            if (window.scrollY > 25 && !navMenu.classList.contains('nav-active')) {
+                navbar.classList.remove('nav-active-view'); 
             }
-            widget.bind(SC.Widget.Events.READY, function() {
-                widget.setVolume(30);
-                widget.play();
-            });
-            document.body.addEventListener('click', playAudio, { once: true });
+        }
+
+        navSensor.addEventListener('mouseenter', showNav);
+        navbar.addEventListener('mouseenter', showNav);
+        navbar.addEventListener('mouseleave', hideNav);
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY <= 25) {
+                showNav();
+            } else {
+                hideNav();
+            }
         });
 
-        // ============ MODALES ============
-        function openModal(id) {
-            var modal = document.getElementById(id);
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('nav-active');
+            navToggle.classList.toggle('open');
+            showNav();
+        });
 
-        function closeModal(event, id) {
-            // Solo cierra si se hizo clic en el fondo o en el botón de cerrar
-            if (event.target.classList.contains('modal-overlay') || 
-                event.target.classList.contains('modal-close')) {
-                var modal = document.getElementById(id);
-                modal.classList.remove('active');
-                document.body.style.overflow = 'auto';
-            }
-        }
-
-        // Cerrar con la tecla ESC
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                var activeModal = document.querySelector('.modal-overlay.active');
-                if (activeModal) {
-                    activeModal.classList.remove('active');
-                    document.body.style.overflow = 'auto';
-                }
-            }
+        const cards = document.querySelectorAll('.altar-card');
+        cards.forEach(card => {
+            card.addEventListener('click', () => {
+                const isOpen = card.classList.contains('expanded');
+                cards.forEach(c => c.classList.remove('expanded'));
+                if (!isOpen) card.classList.add('expanded');
+            });
         });
     </script>
+
 </body>
 </html>
