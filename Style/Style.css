@@ -1,5 +1,5 @@
 /* =========================================================
-   1. RESET Y CONFIGURACIÓN GENERAL DEL INDEX
+   STYLE.CSS — INDEX / PORTADA CASTTLE
    ========================================================= */
 *, *::before, *::after {
     box-sizing: border-box;
@@ -20,7 +20,7 @@ html, body {
 }
 
 /* =========================================================
-   2. FONDO Y CAPA OSCURA
+   FONDO PARA COMPUTADORA (Horizontal / Panorámico)
    ========================================================= */
 .hero-landing {
     position: relative;
@@ -29,7 +29,7 @@ html, body {
     min-height: 100svh;
     display: flex;
     justify-content: center;
-    align-items: flex-end; /* Posiciona el botón en la zona inferior */
+    align-items: flex-end;
     padding: 0 20px 8vh 20px;
     background-image: url('Casttle-index.jpg');
     background-repeat: no-repeat;
@@ -57,7 +57,6 @@ html, body {
     max-width: 650px;
 }
 
-/* Espacio libre para lucir el grabado del tridente y el castillo */
 .hero-spacer {
     flex-grow: 1;
     min-height: 55vh;
@@ -70,9 +69,7 @@ html, body {
     align-items: center;
 }
 
-/* =========================================================
-   3. BOTÓN EXPLORAR: TEXTURA DE METAL GRABADO (COMO EL FONDO)
-   ========================================================= */
+/* BOTÓN EXPLORAR MINIMALISTA */
 .portal-gate-link {
     position: relative;
     display: inline-flex;
@@ -87,7 +84,6 @@ html, body {
     overflow: visible;
 }
 
-/* Haz de luz celestial oculto en reposo */
 .gate-portal-light {
     position: absolute;
     top: 50%;
@@ -104,17 +100,15 @@ html, body {
     z-index: 1;
 }
 
-/* LA LETRA CON EL ACABADO DE ACERO/METAL GRABADO */
+/* TEXTO METAL GRABADO */
 .gate-text {
     position: relative;
     z-index: 2;
     font-family: 'Pirata One', cursive, serif;
-    font-size: 3.2rem; /* Tamaño monumental */
+    font-size: 3.4rem;
     font-weight: 400;
     letter-spacing: 8px;
     text-transform: uppercase;
-    
-    /* Degradado de luz metálica biselada idéntico al logotipo del fondo */
     background: linear-gradient(
         180deg,
         #ffffff 0%,
@@ -125,17 +119,12 @@ html, body {
     );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    
-    /* Relieve tallado en roca/acero y resplandor frío */
     filter: drop-shadow(0 3px 2px rgba(0, 0, 0, 0.98))
             drop-shadow(0 0 12px rgba(180, 215, 255, 0.45));
     transition: filter 0.4s ease, transform 0.4s ease, -webkit-text-fill-color 0.4s ease;
 }
 
-/* =========================================================
-   4. EFECTO: AL PASAR EL CURSOR O TOCAR EN CELULAR
-      (ESTALLA LA LUZ Y LAS LETRAS SE VUELVEN NEGRAS)
-   ========================================================= */
+/* Efecto al pasar cursor / dar clic: luz estalla y letras se vuelven negras */
 .portal-gate-link:hover .gate-portal-light,
 .portal-gate-link:active .gate-portal-light,
 .portal-gate-link:focus-visible .gate-portal-light {
@@ -147,34 +136,41 @@ html, body {
 .portal-gate-link:hover .gate-text,
 .portal-gate-link:active .gate-text,
 .portal-gate-link:focus-visible .gate-text {
-    /* Cambio a negro absoluto sobre el portal de luz */
     -webkit-text-fill-color: #000000;
     background: none;
     transform: scale(1.06);
-    filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.9))
-            drop-shadow(0 0 1px rgba(0, 0, 0, 0.8));
+    filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.9));
 }
 
 /* =========================================================
-   5. ADAPTACIÓN A CELULAR (<= 860px)
+   VERSIÓN INDEPENDIENTE PARA CELULAR (<= 860px)
    ========================================================= */
 @media screen and (max-width: 860px) {
     .hero-landing {
-        background-position: center 30%;
-        padding-bottom: 60px;
+        /* Si creas una versión vertical de la imagen, colócala aquí:
+           background-image: url('Casttle-index-mobile.jpg'); */
+        background-position: center center;
+        background-image: url('Casttle-index-mobile.jpg');
+        background-size: contain; /* En celular no se come las letras ni se corta */
+        background-color: #020204;
+        padding-bottom: 70px;
+    }
+
+    .hero-spacer {
+        min-height: 48vh;s
     }
 
     .portal-gate-link {
-        padding: 14px 28px;
+        padding: 12px 24px;
     }
 
     .gate-text {
-        font-size: 2.5rem;
+        font-size: 2.6rem;
         letter-spacing: 5px;
     }
 
     .gate-portal-light {
-        width: 180px;
-        height: 55px;
+        width: 170px;
+        height: 52px;
     }
 }

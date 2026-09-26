@@ -5,22 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>CASTTLE | Ascensión</title>
     
-    <!-- Tipografías: 
-         - Pirata One (Títulos Góticos)
-         - Cinzel Decorative (Menús y Subtítulos afilados)
-         - Cormorant Garamond (Descripciones / Textos antiguos rituales)
-    -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Pirata+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cormorant+Garamond:wght@400;600&family=Pirata+One&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" href="Style/Ascension.css">
+    <link rel="stylesheet" href="Style/Ascension.css?v=3">
 </head>
 <body class="ascension-page">
 
     <div class="background-overlay"></div>
 
-    <!-- SENSOR PARA DETECTAR CURSOR EN EL TOPE -->
+    <!-- SENSOR PC -->
     <div class="nav-top-sensor" id="navSensor"></div>
 
     <!-- BARRA FANTASMA FLOTANTE -->
@@ -30,14 +25,12 @@
                 <img src="Style/CASTTLE_LETRA.png" alt="CASTTLE" class="nav-logo">
             </a>
 
-            <!-- Botón menú móvil -->
             <button class="nav-toggle" id="navToggle" aria-label="Abrir menú">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
 
-            <!-- Menú con enlaces Cinzel Decorative -->
             <nav class="nav-menu" id="navMenu">
                 <ul class="nav-list">
                     <li><a href="index.html" class="nav-link">Inicio</a></li>
@@ -57,7 +50,7 @@
             <!-- ENCABEZADO CATEDRAL -->
             <header class="cathedral-hero">
                 <span class="ritual-symbol">🜏</span>
-                <h1 class="cathedral-title">ASCENSIÓN</h1>
+                <h1 class="cathedral-title casttle-engraved-text">ASCENSIÓN</h1>
                 <p class="cathedral-tagline">HYBRID LIVE / HARD TECHNO / INDUSTRIAL / REVERSE BASS</p>
                 <div class="gothic-divider"></div>
                 <p class="cathedral-manifesto">
@@ -65,27 +58,25 @@
                 </p>
             </header>
 
-            <!-- LOS TRES ACTOS (Centrados, simétricos e interactivos) -->
+            <!-- LOS TRES ACTOS (3 Columnas en PC, Adaptado en Móvil como la maqueta) -->
             <section class="acts-altar" aria-label="Actos de Ascensión">
                 
-                <!-- ACTO I: EL LLAMADO -->
+                <!-- ACTO I: EL LLAMADO (LA MANO) -->
                 <article class="altar-card" tabindex="0">
                     <div class="card-border-frame">
                         <div class="sigil-container">
                             <div class="ritual-sigil">
-                                <span class="sigil-trident">Ψ</span>
-                                <div class="sigil-snake"></div>
+                                <span class="sigil-hand">🖑</span>
                             </div>
                         </div>
                         <div class="card-info">
                             <span class="act-numeral">I</span>
                             <span class="act-tempo">145 — 155 BPM</span>
-                            <h2 class="act-name">EL LLAMADO</h2>
+                            <h2 class="act-name casttle-engraved-text">EL LLAMADO</h2>
                             <h3 class="act-stage">EL DESPERTAR DE LA ENERGÍA</h3>
                         </div>
                     </div>
 
-                    <!-- Despliegue interactivo -->
                     <div class="card-expansion">
                         <div class="expansion-inner">
                             <p class="act-description">
@@ -101,7 +92,7 @@
                     <div class="pedestal-glow"></div>
                 </article>
 
-                <!-- ACTO II: LA CONFRONTACIÓN -->
+                <!-- ACTO II: LA CONFRONTACIÓN (EL TRIDENTE Y LA SERPIENTE) -->
                 <article class="altar-card featured" tabindex="0">
                     <div class="card-border-frame">
                         <div class="sigil-container">
@@ -113,7 +104,7 @@
                         <div class="card-info">
                             <span class="act-numeral">II</span>
                             <span class="act-tempo">155 — 160 BPM</span>
-                            <h2 class="act-name">LA CONFRONTACIÓN</h2>
+                            <h2 class="act-name casttle-engraved-text">LA CONFRONTACIÓN</h2>
                             <h3 class="act-stage">MÁXIMA TENSIÓN</h3>
                         </div>
                     </div>
@@ -133,19 +124,18 @@
                     <div class="pedestal-glow"></div>
                 </article>
 
-                <!-- ACTO III: LA LIBERACIÓN -->
+                <!-- ACTO III: LA LIBERACIÓN (EL OJO / PORTAL GEOMÉTRICO) -->
                 <article class="altar-card" tabindex="0">
                     <div class="card-border-frame">
                         <div class="sigil-container">
                             <div class="ritual-sigil">
-                                <span class="sigil-trident">Ψ</span>
-                                <div class="sigil-snake"></div>
+                                <span class="sigil-portal">☉</span>
                             </div>
                         </div>
                         <div class="card-info">
                             <span class="act-numeral">III</span>
                             <span class="act-tempo">160 — 170 BPM</span>
-                            <h2 class="act-name">LA LIBERACIÓN</h2>
+                            <h2 class="act-name casttle-engraved-text">LA LIBERACIÓN</h2>
                             <h3 class="act-stage">CATARSIS COLECTIVA</h3>
                         </div>
                     </div>
@@ -167,45 +157,37 @@
 
             </section>
 
-            <!-- EXTENDED LIVE EXPERIENCE -->
-            <section class="extended-card">
-                <div class="extended-glow"></div>
-                <span class="celestial-badge">EXPERIENCIA COMPLETA</span>
-                <h3 class="extended-title">ASCENSIÓN EXTENDED — HASTA 3 HORAS</h3>
-                <div class="gothic-divider small"></div>
-                <p class="extended-desc">
-                    Los tres actos unificados en un ritual continuo sin pausas. Transición progresiva desde el trance hipnótico inicial hasta la catarsis de 170 BPM con procesamiento en tiempo real mediante Ableton Live y guitarra eléctrica.
-                </p>
+            <!-- BOTONES MONOLÍTICO DE ASCENSIÓN EXTENDED Y BOOKING -->
+            <section class="monolith-actions">
+                <a href="#contacto" class="monolith-btn">
+                    <span class="monolith-glow"></span>
+                    <span class="monolith-text casttle-engraved-text">ASCENSIÓN EXTENDED</span>
+                </a>
+                
+                <a href="mailto:booking@casttle.com" class="monolith-btn" id="contacto">
+                    <span class="monolith-glow"></span>
+                    <span class="monolith-text casttle-engraved-text">BOOKING & CONTACTO</span>
+                </a>
             </section>
 
-            <!-- SECCIÓN CONTACTO / BOOKING -->
-            <section class="booking-portal" id="contacto">
-                <h3 class="portal-heading">BOOKING & CONTACTO</h3>
-                <div class="gothic-divider small"></div>
-                <p class="portal-text">
-                    Formatos disponibles para clubes, festivales y eventos underground: <strong>Hybrid Live</strong> (Acto individual o Extended) y <strong>DJ Set</strong>.
-                </p>
-                <div class="portal-cta">
-                    <a href="mailto:booking@casttle.com" class="btn-celestial-action">
-                        <span>CONTACTAR BOOKING</span>
-                    </a>
-                </div>
-            </section>
-
-            <!-- FOOTER CON REDES SOCIALES ILUMINADAS -->
+            <!-- FOOTER: REDES SOCIALES LIMPIAS COMO LA REFERENCIA -->
             <footer class="social-altar">
                 <div class="social-portal">
-                    <a href="https://on.soundcloud.com/u6CzOFonzNvWdFdaib" target="_blank" rel="noopener noreferrer" class="portal-btn" title="SoundCloud">
-                        <img src="Style/Sonundcloud.png" alt="SoundCloud">
+                    <!-- SoundCloud -->
+                    <a href="https://on.soundcloud.com/u6CzOFonzNvWdFdaib" target="_blank" rel="noopener noreferrer" class="portal-icon-link" title="SoundCloud">
+                        <img src="Style/Sonundcloud.png" alt="SoundCloud" class="raw-icon">
                     </a>
-                    <a href="https://www.instagram.com/casttle__live?stkn=MXFjZXphcXB3bXNvZg==" target="_blank" rel="noopener noreferrer" class="portal-btn" title="Instagram">
-                        <img src="Style/Instagram.png" alt="Instagram">
+                    <!-- Instagram -->
+                    <a href="https://www.instagram.com/casttle__live?stkn=MXFjZXphcXB3bXNvZg==" target="_blank" rel="noopener noreferrer" class="portal-icon-link" title="Instagram">
+                        <img src="Style/Instagram.png" alt="Instagram" class="raw-icon">
                     </a>
-                    <a href="https://www.tiktok.com/@casttlewhite3?_r=1&_t=ZS-99qpWx24Fe8" target="_blank" rel="noopener noreferrer" class="portal-btn" title="TikTok">
-                        <img src="Style/TikTok.png" alt="TikTok">
+                    <!-- TikTok -->
+                    <a href="https://www.tiktok.com/@casttlewhite3?_r=1&_t=ZS-99qpWx24Fe8" target="_blank" rel="noopener noreferrer" class="portal-icon-link" title="TikTok">
+                        <img src="Style/TikTok.png" alt="TikTok" class="raw-icon">
                     </a>
-                    <a href="https://open.spotify.com" target="_blank" rel="noopener noreferrer" class="portal-btn" title="Spotify">
-                        <img src="Style/Spotify.png" alt="Spotify">
+                    <!-- Spotify -->
+                    <a href="https://open.spotify.com" target="_blank" rel="noopener noreferrer" class="portal-icon-link" title="Spotify">
+                        <img src="Style/Spotify.png" alt="Spotify" class="raw-icon">
                     </a>
                 </div>
                 <p class="altar-copy">© CASTTLE — HYBRID LIVE</p>
@@ -214,7 +196,7 @@
         </div>
     </main>
 
-    <!-- SCRIPT DE VISIBILIDAD DE NAVBAR E INTERACCIÓN -->
+    <!-- SCRIPTS -->
     <script>
         const navbar = document.getElementById('mainNavbar');
         const navSensor = document.getElementById('navSensor');
