@@ -20,7 +20,7 @@ html, body {
 }
 
 /* =========================================================
-   FONDO PARA COMPUTADORA (Horizontal / Panorámico)
+   1. FONDO PARA ESCRITORIO (Panorámico horizontal)
    ========================================================= */
 .hero-landing {
     position: relative;
@@ -69,7 +69,9 @@ html, body {
     align-items: center;
 }
 
-/* BOTÓN EXPLORAR MINIMALISTA */
+/* =========================================================
+   2. BOTÓN EXPLORAR: MINIMALISTA, SIN LÍNEAS
+   ========================================================= */
 .portal-gate-link {
     position: relative;
     display: inline-flex;
@@ -84,6 +86,7 @@ html, body {
     overflow: visible;
 }
 
+/* Resplandor del portal de luz (oculto en reposo) */
 .gate-portal-light {
     position: absolute;
     top: 50%;
@@ -100,7 +103,7 @@ html, body {
     z-index: 1;
 }
 
-/* TEXTO METAL GRABADO */
+/* Tipografía en acero grabado biselado (acorde al arte del fondo) */
 .gate-text {
     position: relative;
     z-index: 2;
@@ -124,7 +127,9 @@ html, body {
     transition: filter 0.4s ease, transform 0.4s ease, -webkit-text-fill-color 0.4s ease;
 }
 
-/* Efecto al pasar cursor / dar clic: luz estalla y letras se vuelven negras */
+/* =========================================================
+   3. EFECTO HOVER / CLIC (PORTAL DE LUZ Y TEXTO EN NEGRO)
+   ========================================================= */
 .portal-gate-link:hover .gate-portal-light,
 .portal-gate-link:active .gate-portal-light,
 .portal-gate-link:focus-visible .gate-portal-light {
@@ -143,21 +148,20 @@ html, body {
 }
 
 /* =========================================================
-   VERSIÓN INDEPENDIENTE PARA CELULAR (<= 860px)
+   4. VERSIÓN INDEPENDIENTE PARA CELULAR (<= 860px)
    ========================================================= */
 @media screen and (max-width: 860px) {
     .hero-landing {
-        /* Si creas una versión vertical de la imagen, colócala aquí:
-           background-image: url('Casttle-index-mobile.jpg'); */
-        background-position: center center;
+        /* Imagen vertical exclusiva para pantallas móviles */
         background-image: url('Casttle-index-mobile.jpg');
-        background-size: contain; /* En celular no se come las letras ni se corta */
-        background-color: #020204;
+        background-position: center center;
+        background-size: cover;
+        background-color: #010103;
         padding-bottom: 70px;
     }
 
     .hero-spacer {
-        min-height: 48vh;s
+        min-height: 48vh;
     }
 
     .portal-gate-link {
