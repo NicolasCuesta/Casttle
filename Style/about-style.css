@@ -1,129 +1,581 @@
-/* =========================================
-   VARIABLES DE COLOR (Mismas que en style.css)
-   ========================================= */
+/* =========================================================
+   STYLE / ABOUT.CSS — CASTTLE (DEFINITIVO 3 COLUMNAS)
+   ========================================================= */
 :root {
-    --abyss-black: #090909;
-    --sapphire-blue: #0F1C3F;
-    --antique-silver: #C0C0C0;
-    --text-main: #e0e0e0;
-    --text-muted: #888888;
-    --border-color: #2a2a2a;
+    --bg-void: #020204;
+    --card-surface: rgba(8, 8, 12, 0.94);
+    --card-hover: rgba(14, 15, 22, 0.98);
+    
+    --steel-highlight: #ffffff;
+    --steel-mid: #9ea4b5;
+    --steel-dark: #3a3e4c;
+    --steel-edge: #15171f;
+    --silver-glow: rgba(220, 235, 255, 0.85);
+    --crimson-ritual: rgba(255, 30, 45, 0.85);
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+    background-color: var(--bg-void);
+}
 
 body {
-    background-color: var(--abyss-black);
-    color: var(--text-main);
-    font-family: 'Montserrat', sans-serif;
-    line-height: 1.6;
+    width: 100%;
+    min-height: 100vh;
+    overflow-x: hidden;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    color: #dedee3;
+    background-color: var(--bg-void);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
 }
 
-h1, h3 {
-    font-family: 'Cinzel', serif;
-    color: var(--antique-silver);
+/* =========================================================
+   1. FONDO CÓSMICO GENERAL
+   ========================================================= */
+.about-page {
+    position: relative;
+    background-image: url('Casttle-index.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    background-attachment: fixed;
+    min-height: 100vh;
+}
+
+.background-overlay {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(3, 3, 5, 0.4) 0%, rgba(2, 2, 4, 0.94) 100%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* =========================================================
+   2. TEXTO ACERO GRABADO
+   ========================================================= */
+.casttle-engraved-text {
+    font-family: 'Pirata One', cursive, serif;
     text-transform: uppercase;
-    letter-spacing: 2px;
+    background: linear-gradient(
+        180deg,
+        var(--steel-highlight) 0%,
+        #e2e8f5 25%,
+        var(--steel-mid) 50%,
+        var(--steel-dark) 75%,
+        var(--steel-edge) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 2px 1px rgba(0, 0, 0, 0.95))
+            drop-shadow(0 0 10px rgba(180, 210, 255, 0.35));
 }
 
-a { color: var(--antique-silver); text-decoration: none; transition: 0.3s; }
-a:hover { color: #ffffff; }
+/* =========================================================
+   3. BARRA DE NAVEGACIÓN
+   ========================================================= */
+.nav-top-sensor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 35px;
+    z-index: 180;
+}
 
-/* =========================================
-   NAVEGACIÓN (Copiada del index para mantener consistencia)
-   ========================================= */
-nav {
-    background: rgba(9, 9, 9, 0.95);
-    border-bottom: 1px solid var(--border-color);
-    padding: 1rem 5%;
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 200;
+    background: linear-gradient(180deg, rgba(2, 2, 4, 0.85) 0%, rgba(2, 2, 4, 0) 100%);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    padding: 18px 45px;
+    transform: translateY(-105%);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.navbar.nav-active-view {
+    transform: translateY(0);
+}
+
+.nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-    backdrop-filter: blur(10px);
 }
-nav .logo a { font-family: 'Cinzel', serif; font-size: 1.5rem; font-weight: 900; letter-spacing: 4px; }
-nav .nav-links { list-style: none; display: flex; gap: 2rem; }
-nav .nav-links li a { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); }
-nav .nav-links li a:hover { color: var(--antique-silver); }
-nav .social-icons { display: flex; gap: 1rem; }
-nav .social-icons a { color: var(--text-muted); font-size: 1.1rem; }
-nav .social-icons a:hover { color: var(--antique-silver); }
 
-/* =========================================
-   CONTENEDOR "SOBRE MÍ"
-   ========================================= */
-.about-container {
-    padding: 10rem 5% 5rem 5%; /* Margen superior para que no tape el navbar */
-    max-width: 1200px;
-    margin: 0 auto;
+.nav-brand {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.nav-logo {
+    height: 65px;
+    width: auto;
+    max-width: 280px;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.9));
+    transition: transform 0.35s ease;
+}
+
+.nav-brand:hover .nav-logo {
+    transform: scale(1.04);
+    filter: drop-shadow(0 0 16px var(--silver-glow));
+}
+
+.nav-list {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    gap: 36px;
+}
+
+.nav-link {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 0.92rem;
+    font-weight: 700;
+    letter-spacing: 3.5px;
+    color: #cfd2dd;
+    text-decoration: none;
+    text-transform: uppercase;
+    position: relative;
+    padding: 6px 10px;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: #ffffff;
+    text-shadow: 0 0 16px var(--silver-glow);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 2px;
+    background: #ffffff;
+    box-shadow: 0 0 10px var(--silver-glow);
+    transition: width 0.35s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 80%;
+}
+
+.nav-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 32px;
+    height: 24px;
+    padding: 0;
+}
+
+.nav-toggle span {
+    width: 100%;
+    height: 2px;
+    background-color: #ffffff;
+    box-shadow: 0 0 8px var(--silver-glow);
+    transition: all 0.3s ease;
+}
+
+/* =========================================================
+   4. CONTENIDO Y SECCIONES GRID ASIMÉTRICAS
+   ========================================================= */
+.main-content {
+    position: relative;
+    z-index: 2;
+    padding: 70px 24px 90px 24px;
+    display: flex;
+    justify-content: center;
+}
+
+.about-wrapper {
+    width: 100%;
+    max-width: 1250px;
+    display: flex;
+    flex-direction: column;
+    gap: 70px;
+}
+
+.about-grid-section {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 55px;
     align-items: center;
 }
 
-.about-text h1 {
-    font-size: 3rem;
-    margin-bottom: 2rem;
-    border-bottom: 2px solid var(--antique-silver);
-    display: inline-block;
-    padding-bottom: 0.5rem;
+.about-text-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
-.about-text h3 {
-    font-size: 1.2rem;
-    margin-top: 2rem;
-    margin-bottom: 0.5rem;
-    color: var(--faded-silver);
+.ritual-symbol {
+    font-size: 2.6rem;
+    color: #e0e5f5;
+    margin-bottom: 0.4rem;
+    filter: drop-shadow(0 0 14px var(--silver-glow));
 }
 
-.about-text p {
-    margin-bottom: 1rem;
-    color: var(--text-muted);
-    font-size: 0.95rem;
-    text-align: justify;
+.about-title, .about-section-title {
+    font-size: 4rem;
+    font-weight: 400;
+    letter-spacing: 5px;
+    margin-bottom: 0.3rem;
 }
 
-.about-image {
-    height: 600px;
-    background-color: var(--sapphire-blue);
-    border: 1px solid var(--border-color);
-    /* ⚠️ CAMBIA 'tu-foto.jpg' POR TU IMAGEN */
-    background-image: url('tu-foto.jpg');
-    background-size: cover;
-    background-position: center;
-    box-shadow: 0 0 30px rgba(15, 28, 63, 0.8);
-}
-
-/* Botón Industrial */
-.btn-industrial {
-    display: inline-block;
-    margin-top: 2rem;
-    padding: 0.8rem 2rem;
-    border: 1px solid var(--antique-silver);
-    color: var(--antique-silver);
+.about-subtitle {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 0.88rem;
+    letter-spacing: 4px;
     text-transform: uppercase;
-    font-size: 0.8rem;
-    letter-spacing: 2px;
-    background: transparent;
-    transition: 0.3s;
-}
-.btn-industrial:hover {
-    background: var(--antique-silver);
-    color: var(--abyss-black);
-    box-shadow: 0 0 15px rgba(192, 192, 192, 0.4);
+    color: var(--steel-mid);
+    font-weight: 700;
+    margin-bottom: 1.5rem;
 }
 
-/* =========================================
-   RESPONSIVE (Móvil)
-   ========================================= */
-@media (max-width: 900px) {
-    .about-container { grid-template-columns: 1fr; padding-top: 8rem; }
-    .about-image { height: 400px; }
-    nav { flex-direction: column; gap: 1rem; padding: 1rem; }
-    nav .nav-links { display: none; }
+.gothic-divider-left {
+    width: 90px;
+    height: 2px;
+    background: linear-gradient(90deg, #ffffff, transparent);
+    box-shadow: 0 0 10px var(--silver-glow);
+    margin-bottom: 1.8rem;
+}
+
+.gothic-divider.small {
+    width: 60px;
+    margin: 0 auto 1.5rem auto;
+    background: linear-gradient(90deg, transparent, #ffffff, transparent);
+}
+
+.about-desc {
+    font-size: 1.18rem;
+    line-height: 1.85;
+    color: #c8c8d0;
+    margin-bottom: 1.2rem;
+}
+
+.about-specs-list {
+    list-style: none;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+}
+
+.about-specs-list li {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 0.82rem;
+    letter-spacing: 1.5px;
+    color: #e0e5f5;
+    background: rgba(12, 14, 20, 0.85);
+    border: 1px solid rgba(220, 235, 255, 0.2);
+    padding: 12px 18px;
+    border-radius: 2px;
+}
+
+.about-specs-list li span {
+    color: var(--steel-mid);
+    font-weight: 700;
+}
+
+/* =========================================================
+   5. IMÁGENES LIMPIAS COMPLETAS (SIN MARCOS)
+   ========================================================= */
+.about-image-col {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.clean-image-container {
+    width: 100%;
+    overflow: hidden;
+    border-radius: 3px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.9);
+}
+
+.artist-clean-img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(30%) contrast(110%) brightness(0.95);
+    transition: transform 0.5s ease, filter 0.5s ease;
+}
+
+.clean-image-container:hover .artist-clean-img {
+    transform: scale(1.02);
+    filter: grayscale(10%) contrast(115%) brightness(1);
+}
+
+/* =========================================================
+   6. SECCIÓN 3 COLUMNAS: FOTO - TEXTO - FOTO (EL INSTRUMENTO Y EL CAOS)
+   ========================================================= */
+.instrument-chaos-section {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr 1fr;
+    gap: 35px;
+    align-items: center;
+    width: 100%;
+}
+
+.chaos-img-col {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.prominent-img {
+    transform: scale(1.06); /* Ligeramente más altas para dar protagonismo y seriedad */
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.95);
+}
+
+.chaos-text-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+}
+
+/* =========================================================
+   7. BANNER ANCHO DIVISORIO
+   ========================================================= */
+.full-width-banner-section {
+    width: 100%;
+    margin: 10px 0;
+}
+
+.full-width-banner {
+    position: relative;
+    width: 100%;
+    max-height: 480px;
+    overflow: hidden;
+    border-radius: 4px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.95);
+    border: 1px solid rgba(220, 235, 255, 0.15);
+}
+
+.banner-wide-img {
+    width: 100%;
+    height: 100%;
+    max-height: 480px;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(20%) contrast(115%) brightness(0.9);
+    transition: transform 0.6s ease;
+}
+
+.full-width-banner:hover .banner-wide-img {
+    transform: scale(1.02);
+}
+
+.banner-fade-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(2,2,4,0.2) 0%, transparent 50%, rgba(2,2,4,0.6) 100%);
+    pointer-events: none;
+}
+
+/* =========================================================
+   8. CANALES RITUALES (ICONOS FLOTANTES CON BRILLO)
+   ========================================================= */
+.accolades-section {
+    text-align: center;
+    padding: 30px 20px;
+    background: transparent !important;
+    border: none !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+}
+
+.accolades-title {
+    font-size: 2.4rem;
+    letter-spacing: 3px;
+    margin-bottom: 0.2rem;
+}
+
+.accolades-grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.social-icon-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    outline: none;
+    cursor: pointer;
+    padding: 10px;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.social-icon-link .raw-icon {
+    width: 58px;
+    height: 58px;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.95)) brightness(0.95);
+    transition: transform 0.35s ease, filter 0.35s ease;
+}
+
+.social-icon-link:hover {
+    transform: translateY(-6px) scale(1.1);
+}
+
+.social-icon-link:hover .raw-icon {
+    filter: drop-shadow(0 0 18px rgba(220, 235, 255, 0.95)) brightness(1.3);
+}
+
+/* =========================================================
+   9. FOOTER
+   ========================================================= */
+.social-altar {
+    padding-top: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    border-top: 1px dashed rgba(255, 255, 255, 0.15);
+}
+
+.altar-copy {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: 0.76rem;
+    letter-spacing: 3px;
+    color: #6a6a72;
+    text-transform: uppercase;
+}
+
+/* =========================================================
+   10. ADAPTACIÓN A CELULAR (<= 860px)
+   ========================================================= */
+@media screen and (max-width: 860px) {
+    .about-page {
+        background-position: center 20%;
+        background-size: cover;
+    }
+
+    .navbar {
+        padding: 12px 20px;
+        transform: translateY(0);
+        background: rgba(2, 2, 4, 0.96);
+    }
+
+    .nav-logo {
+        height: 48px;
+        max-width: 200px;
+    }
+
+    .nav-toggle {
+        display: flex;
+    }
+
+    .nav-menu {
+        position: fixed;
+        top: 72px;
+        left: 0;
+        width: 100%;
+        background: rgba(3, 3, 5, 0.98);
+        border-bottom: 1px solid rgba(200, 225, 255, 0.25);
+        backdrop-filter: blur(25px);
+        transform: translateY(-160%);
+        transition: transform 0.4s ease;
+        padding: 30px 0;
+    }
+
+    .nav-menu.nav-active {
+        transform: translateY(0);
+    }
+
+    .nav-list {
+        flex-direction: column;
+        gap: 22px;
+    }
+
+    .nav-link {
+        font-size: 1.1rem;
+        letter-spacing: 4px;
+    }
+
+    .nav-toggle.open span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    .nav-toggle.open span:nth-child(2) {
+        opacity: 0;
+    }
+    .nav-toggle.open span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .about-grid-section {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    /* Celular: Pasamos las 3 columnas a una sola columna ordenada */
+    .instrument-chaos-section {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .prominent-img {
+        transform: scale(1);
+    }
+
+    .about-title, .about-section-title {
+        font-size: 3.2rem;
+        letter-spacing: 3px;
+    }
+
+    .about-desc {
+        font-size: 1.05rem;
+    }
+
+    .full-width-banner {
+        max-height: 250px;
+    }
+
+    .banner-wide-img {
+        max-height: 250px;
+    }
+
+    .accolades-grid {
+        gap: 25px;
+    }
+
+    .social-icon-link .raw-icon {
+        width: 46px;
+        height: 46px;
+    }
 }
